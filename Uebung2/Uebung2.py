@@ -1,18 +1,44 @@
+# A1 Schwer Verständliche Codeteile FALR CNQZ CNSK
+# Vergabe der Id bei neuen Tasks, wenn ID nicht mitgegeben wird
+# Nutzen von backup_tasks
+# Global tasks nicht global
+# Datenstruktur Task unklar
+# Print unübersichtlich
+# get_task_lenght Warum Schleife
+# calculate_task_average Berechnung ist unklar
+# upcoming_tasks Sortierung unklar
+# process_tasks nicht fertig entwickelt, Sinn unklar
+# calculate_task_average Average von was?
+
+# A2 Mögliche Verbesserungen FALR CNQZ CNSK
+# ID Vergabe so gestalten, das es nicht zu dopplungen kommen kann
+# Task Datenstruktur definieren
+# Echte Datenstrukturen nutzen (BSP. Datum nicht als String)
+# get_task_lenght Schleife mit tasks.lenght() ersetzen
+# Global tasks global definieren
+# process_tasks ist für diese Anwendung unnütz, kann enterfent werden
+
 import datetime
 import random
 
-tasks = None
+# task nicht als Array sonder als Array
+tasks = {}
 backup_tasks = {}
 
 
-def add_task(name, due_date, priority=3, task_id=None):
-    global tasks, backup_tasks
-    if tasks is None:
-        tasks = {}
+def add_task(name, due_date, priority=3, task_id=None, fUser='user1', fTasks=tasks, fBackupTasks=backup_tasks):
+    #   Global aus Variable geholt
+    #   global tasks, backup_tasks
+
+    # Wird direkt als Array definiert
+    #    if tasks is None:
+    #        tasks = {}
 
     if task_id == None:
-        task_id = len(tasks) + random.randint(2, 7)  # Wichtig! Nicht verändern!
-    task = [name, due_date, priority, False, "user1",
+        # Setzen der TaskID erneuert, auf Timestamp der ist immer Individuel
+        #        task_id = len(tasks) + random.randint(2, 7)  # Wichtig! Nicht verändern
+        task_id = datetime.datetime.timestamp()
+    task = [name, due_date, priority, False, fUser,
             datetime.datetime.now().strftime("%d-%m-%Y %H:%M")]
     tasks[task_id] = task
     backup_tasks[task_id] = task
