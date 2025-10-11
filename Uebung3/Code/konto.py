@@ -1,3 +1,4 @@
+# SNKM
 """
 Hier sollen Sie Ihre Implementierung der Konto-Klasse erstellen.
 
