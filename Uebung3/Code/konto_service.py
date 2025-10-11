@@ -1,3 +1,6 @@
+# Jan Hamer [JaHa]
+# Leon Borchardt [LeBo]
+
 """
 TODO: Implementieren Sie die KontoService-Klasse basierend auf dem KontoServiceInterface
 """
@@ -30,7 +33,7 @@ class KontoService(KontoServiceInterface):
 
     def __init__(self):
         # TODO: Team B - Implementierung
-        # Tipp: self._konten: List[KontoInterface] = []
+        self._konten: List[KontoInterface] = []
         pass
 
     def _create_konto(self, konto_id: int, saldo: Decimal) -> KontoInterface:
@@ -73,31 +76,48 @@ class KontoService(KontoServiceInterface):
         # return Konto(konto_id, saldo)
 
     def konten_auflisten(self) -> List[Dict]:
-        # TODO: Implementierung
-        pass
+        return self._konten
 
     def konto_erstellen(self, saldo: Decimal = Decimal('0.00')) -> int:
-        # TODO: Team B - Implementierung
+        # TODO: Team B - Implementierung 
         # Tipp: Nutzen Sie self._create_konto() für Konto-Erstellung!
         # Beispiel:
-        # konto_id = self.get_max_konto_id() + 1
-        # konto = self._create_konto(konto_id, saldo)
-        # self._konten.append(konto)
-        # return konto_id
-        pass
+        konto_id = self.get_max_konto_id() + 1
+        konto = self._create_konto(konto_id, saldo)
+        self._konten.append(konto)
+        return konto_id
 
     def ueberweisen(self, von_konto_id: int, zu_konto_id: int, betrag: Decimal) -> None:
-        # TODO: Implementierung
-        pass
+        if betrag < 1:
+            raise ValueError("Ungültige Mengenangabe!")
+        
+        von_konto = next((konto for konto in self._konten if konto.id == von_konto_id))
+        zu_konto = next(konto for konto in self._konten if konto.id == zu_konto_id)
+        
+        if von_konto.saldo < betrag:
+            raise RuntimeError("Nicht genügend Saldo vorhanden!")
+        
+        von_konto.auszahlen(betrag)
+        zu_konto.einzahlen(betrag)
 
     def einziehen(self, von_konto_id: int, zu_konto_id: int, betrag: Decimal) -> None:
-        # TODO: Implementierung
-        pass
+        von_konto = next((konto for konto in self._konten if konto.id == von_konto_id))
+        zu_konto = next(konto for konto in self._konten if konto.id == zu_konto_id)
+        von_konto.auszahlen(betrag)
+        zu_konto.einzahlen(betrag)
 
     def get_max_konto_id(self) -> int:
-        # TODO: Implementierung
-        pass
+        max_id = 0
+        for konto in self._konten:
+            if konto.id > max_id:
+                max_id = konto.id
+        return max_id
+
 
     def gesamtsaldo_berechnen(self) -> Decimal:
-        # TODO: Implementierung
-        pass
+        max_saldo = Decimal(0.0)
+        for konto in self._konten:
+             max_saldo += + konto.saldo
+        return max_saldo
+
+        
