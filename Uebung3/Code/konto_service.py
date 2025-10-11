@@ -1,3 +1,4 @@
+# CNSK
 """
 TODO: Implementieren Sie die KontoService-Klasse basierend auf dem KontoServiceInterface
 """
@@ -31,7 +32,7 @@ class KontoService(KontoServiceInterface):
     def __init__(self):
         # TODO: Team B - Implementierung
         # Tipp: self._konten: List[KontoInterface] = []
-        pass
+        self._konten: List[KontoInterface] = []
 
     def _create_konto(self, konto_id: int, saldo: Decimal) -> KontoInterface:
         """
@@ -74,7 +75,7 @@ class KontoService(KontoServiceInterface):
 
     def konten_auflisten(self) -> List[Dict]:
         # TODO: Implementierung
-        pass
+        return List[self]
 
     def konto_erstellen(self, saldo: Decimal = Decimal('0.00')) -> int:
         # TODO: Team B - Implementierung
@@ -84,10 +85,14 @@ class KontoService(KontoServiceInterface):
         # konto = self._create_konto(konto_id, saldo)
         # self._konten.append(konto)
         # return konto_id
-        pass
+        konto_id = self.get_max_konto_id() + 1
+        self._create_konto(konto_id, saldo)
+
+        return self
 
     def ueberweisen(self, von_konto_id: int, zu_konto_id: int, betrag: Decimal) -> None:
         # TODO: Implementierung
+        
         pass
 
     def einziehen(self, von_konto_id: int, zu_konto_id: int, betrag: Decimal) -> None:
