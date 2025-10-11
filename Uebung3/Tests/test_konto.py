@@ -22,33 +22,74 @@ Tipps für gute Tests:
 import pytest
 from decimal import Decimal
 
-# TODO: Team A - Entkommentiert nach eurer Implementierung:
-# from ..Code.konto import Konto
+from Uebung3.Code.konto import Konto
 
 
 class TestKontoErstellung:
     """
     Tests für die Konto-Erstellung
-    TODO: Team A - Implementieren Sie Tests für den Konstruktor
     """
+    # Umsetzung von HAHR
+    def test_kontoerstellung_validId_positivSaldo(self):
+        """Test: Konto mit gültiger ID und positivem Saldo erstellen"""
+        konto = Konto(1, Decimal("100.00"))
+        assert konto.konto_id == 1
+        assert konto.saldo == Decimal("100.00")
 
-    def test_placeholder_konto_erstellung(self):
-        """
-        Placeholder-Test - ersetzen Sie diesen durch echte Tests!
+    # Umsetzung von HAHR
+    def test_kontoerstellung_validId_zeroSaldo(self):
+        """Test: Konto mit gültiger ID und Saldo 0 erstellen"""
+        konto = Konto(2, Decimal("0.00"))
+        assert konto.konto_id == 2
+        assert konto.saldo == Decimal("0.00")
 
-        Beispiele für Tests, die Sie schreiben könnten:
-        - Konto mit gültiger ID und positivem Saldo erstellen
-        - Konto mit gültiger ID und Saldo 0 erstellen  
-        - Konto mit ungültiger ID (negativ, 0, String) → Exception?
-        - Konto mit ungültigem Saldo (negativ, String) → Exception?
-        """
-        # TODO: Team A - Ersetzen Sie diesen Placeholder durch echte Tests
-        assert True, "Placeholder - bitte durch echte Tests ersetzen!"
+    # Umsetzung von HAHR
+    def test_kontoerstellung_validId_negativSaldo(self):
+        """Test: Konto mit gültiger ID und negativem Saldo → Exception"""
+        with pytest.raises(ValueError):
+            Konto(3, Decimal("-50.00"))
+    
+    # Umsetzung von HAHR
+    def test_kontoerstellung_invalidId_negative(self):
+        """Test: Konto mit ungültiger ID (negativ) → Exception"""
+        with pytest.raises(ValueError):
+            Konto(-1, Decimal("50.00"))
 
-        # Beispiel-Code (entkommentiert nach Implementierung):
-        # konto = Konto(1, Decimal("100.00"))
-        # assert konto.konto_id == 1
-        # assert konto.saldo == Decimal("100.00")
+    # Umsetzung von PRSE
+    def test_kontoerstellung_invalidId_zero(self):
+        """Test: Konto mit ungültiger ID (0) → Exception"""
+        with pytest.raises(ValueError):
+            Konto(0, Decimal("50.00"))
+
+    # Umsetzung von PRSE
+    def test_kontoerstellung_invalidId_string(self):
+        """Test: Konto mit ungültiger ID (String) → Exception"""
+        with pytest.raises(ValueError):
+            Konto("abc", Decimal("50.00"))
+
+    # Umsetzung von PRSE
+    def test_kontoerstellung_invalidSaldo_negative(self):
+        """Test: Konto mit ungültigem Saldo (negativ) → Exception"""
+        with pytest.raises(ValueError):
+            Konto(1, Decimal("-10.00"))
+
+    # Umsetzung von PRSE
+    def test_kontoerstellung_invalidSaldo_string(self):
+        """Test: Konto mit ungültigem Saldo, welches als string übergeben wird und zur Exception führt"""
+        with pytest.raises(ValueError):
+            Konto(1, "fünfzig")
+
+    # Umsetzung von PRSE
+    def test_kontoerstellung_id_none(self):
+        """Test: Konto mit None als ID → Exception"""
+        with pytest.raises(ValueError):
+            Konto(None, Decimal("50.00"))
+
+    # Umsetzung von PRSE
+    def test_kontoerstellung_saldo_none(self):
+        """Test: Konto mit None als Saldo → Exception"""
+        with pytest.raises(ValueError):
+            Konto(1, None)
 
 
 class TestKontoEigenschaften:
