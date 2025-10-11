@@ -1,3 +1,5 @@
+# Implementiert von: [HAHR], [PRSE]
+
 """
 Test-Template für die Konto-Klasse (Test-After Approach)
 ========================================================
