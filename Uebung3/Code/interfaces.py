@@ -24,19 +24,25 @@ class KontoInterface(ABC):
         Raises:
             ValueError: Wenn konto_id leer oder nicht numerisch ist
         """
-        pass
+        self.id     = konto_id
+        self.saldo  = saldo
+
+        if konto_id == 0:
+            raise ValueError("ERROR: konto_id leer oder nicht numerisch[" + konto_id + "]")
+        else:
+            return self
     
     @property
     @abstractmethod
     def konto_id(self) -> int:
         """Gibt die Konto-ID zurück"""
-        pass
+        return self.id
     
     @property
     @abstractmethod
     def saldo(self) -> Decimal:
         """Gibt den aktuellen Saldo zurück"""
-        pass
+        return self.saldo
     
     @abstractmethod
     def einzahlen(self, betrag: Decimal) -> None:
@@ -49,7 +55,11 @@ class KontoInterface(ABC):
         Raises:
             ValueError: Wenn der Betrag negativ oder null ist
         """
-        pass
+        if (self.saldo - betrag) < 0:
+            raise ValueError("ERROR: Betrag negativ oder null[" + self.saldo + "]")
+        else:
+            self.saldo = self.saldo - betrag
+            return self
     
     @abstractmethod
     def auszahlen(self, betrag: Decimal) -> None:
@@ -63,7 +73,13 @@ class KontoInterface(ABC):
             ValueError: Wenn der Betrag negativ oder null ist
             RuntimeError: Wenn das Konto überzogen würde (Saldo < 0)
         """
-        pass
+        if betrag <= 0:
+            raise ValueError("ERROR: Betrag negativ oder null[" + betrag + "]")
+        if (self.saldo - betrag) < 0:
+            raise RuntimeError("ERROR: Konto negativ oder null[" + (self.saldo - betrag) + "]")
+        else:
+            self.saldo = self.saldo - betrag
+            return self
 
 
 class KontoServiceInterface(ABC):
