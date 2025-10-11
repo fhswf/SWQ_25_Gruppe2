@@ -1,3 +1,4 @@
+# CNSK
 """
 Interfaces für die Banking-Anwendung - Teil 1
 
@@ -55,10 +56,10 @@ class KontoInterface(ABC):
         Raises:
             ValueError: Wenn der Betrag negativ oder null ist
         """
-        if (self.saldo - betrag) < 0:
-            raise ValueError("ERROR: Betrag negativ oder null[" + self.saldo + "]")
+        if betrag < 0:
+            raise ValueError("ERROR: Betrag negativ oder null[" + betrag + "]")
         else:
-            self.saldo = self.saldo - betrag
+            self.saldo = self.saldo + betrag
             return self
     
     @abstractmethod
