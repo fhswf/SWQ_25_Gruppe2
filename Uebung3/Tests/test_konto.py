@@ -21,7 +21,7 @@ import pytest
 from decimal import Decimal
 
 # TODO: Team A - Entkommentiert nach eurer Implementierung:
-# from ..Code.konto import Konto
+from ..Code.konto import Konto
 
 
 class TestKontoErstellung:
@@ -30,7 +30,7 @@ class TestKontoErstellung:
     TODO: Team A - Implementieren Sie Tests für den Konstruktor
     """
 
-    def test_placeholder_konto_erstellung(self):
+    def test_konto_erstellung_(self):
         """
         Placeholder-Test - ersetzen Sie diesen durch echte Tests!
 
@@ -41,7 +41,12 @@ class TestKontoErstellung:
         - Konto mit ungültigem Saldo (negativ, String) → Exception?
         """
         # TODO: Team A - Ersetzen Sie diesen Placeholder durch echte Tests
-        assert True, "Placeholder - bitte durch echte Tests ersetzen!"
+        # Arrange
+        konto = Konto(1, Decimal("100.00"))
+
+        # Act
+
+        # Assert
 
         # Beispiel-Code (entkommentiert nach Implementierung):
         # konto = Konto(1, Decimal("100.00"))
