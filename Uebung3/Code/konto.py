@@ -1,4 +1,4 @@
-# SNKM
+# Implementiert von: SNKM
 """
 Hier sollen Sie Ihre Implementierung der Konto-Klasse erstellen.
 
@@ -7,7 +7,6 @@ TODO: Implementieren Sie die Konto-Klasse basierend auf dem KontoInterface
 
 from decimal import Decimal
 from .interfaces import KontoInterface
-
 
 class Konto(KontoInterface):
     """    

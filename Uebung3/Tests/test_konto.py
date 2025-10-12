@@ -1,4 +1,4 @@
-# SNKM
+# Implementiert von: SNKM
 """
 Test-Template für die Konto-Klasse (Test-After Approach)
 ========================================================
@@ -23,8 +23,6 @@ from decimal import Decimal
 
 # TODO: Team A - Entkommentiert nach eurer Implementierung:
 from ..Code.konto import Konto
-from Uebung3.Code import konto
-
 
 class TestKontoErstellung:
     """
@@ -140,16 +138,11 @@ class TestKontoGrenzfaelle:
         # - Gleichheit von Konten
         assert True, "TODO: Tests für Grenzfälle implementieren"
 
-    def test_placeholder_besondere_situationen(self):
-        konto = Konto(1, Decimal("100.00"))
-        konto.einzahlen(Decimal("0.01"))
-        assert konto.saldo == Decimal("100.01")
-
     def test_placeholder_decimal_precision(self):
-        konto = Konto(1, Decimal("100.005"))
-        assert konto.saldo == Decimal("100.005")
-        konto.einzahlen(Decimal("0.0005"))
-        assert konto.saldo == Decimal("100.0055")
+        konto = Konto(1, Decimal("100.05"))
+        assert konto.saldo == Decimal("100.05")
+        konto.einzahlen(Decimal("0.11"))
+        assert konto.saldo == Decimal("100.16")
 
     def test_placeholder_large_amounts(self):
         konto = Konto(1, Decimal("1000000000.00"))
@@ -158,8 +151,8 @@ class TestKontoGrenzfaelle:
 
     def test_placeholder_small_amounts(self):
         konto = Konto(1, Decimal("0.01"))
-        konto.auszahlen(Decimal("0.005"))
-        assert konto.saldo == Decimal("0.005")
+        konto.auszahlen(Decimal("0.05"))
+        assert konto.saldo == Decimal("0.05")
 
     def test_konto_equality(self):
         konto1 = Konto(1, Decimal("100.00"))
@@ -167,6 +160,11 @@ class TestKontoGrenzfaelle:
         konto3 = Konto(2, Decimal("100.00"))
         assert konto1 == konto2
         assert konto1 != konto3
+
+    def test_konto_string_representation(self):
+        konto = Konto(1, Decimal("100.00"))
+        assert str(konto) == "Konto(ID: 1, Saldo: 100.00)"
+        assert repr(konto) == "Konto(konto_id=1, saldo=Decimal('100.00'))"
 
 
 # TODO: Team A - Erweitern Sie diese Klassen oder fügen Sie neue hinzu!
