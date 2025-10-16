@@ -6,8 +6,8 @@ TODO: Implementieren Sie die KontoService-Klasse basierend auf dem KontoServiceI
 
 from decimal import Decimal
 from typing import List, Dict
-from interfaces import KontoServiceInterface, KontoInterface
-from konto import Konto
+from .interfaces import KontoServiceInterface, KontoInterface
+from .konto import Konto
 
 
 class KontoService(KontoServiceInterface):
@@ -50,6 +50,30 @@ class KontoService(KontoServiceInterface):
         konto = self._create_konto(konto_id, saldo)
         self._konten.append(konto)
         return konto_id
+    
+    def einzahlen(self, konto_id: int, betrag: Decimal) -> None:
+        if betrag <= 0:
+            raise ValueError("Betrag muss positiv sein!")
+        
+        konto = next((k for k in self._konten if k.konto_id == konto_id), None)
+
+        if konto is None:
+            raise ValueError("Konto nicht gefunden!")
+        
+        konto.einzahlen(betrag)
+
+    def auszahlen(self, konto_id: int, betrag: Decimal) -> None:
+        if betrag <= 0:
+            raise ValueError("Betrag muss positiv sein!")
+        
+        konto = next((k for k in self._konten if k.konto_id == konto_id), None)
+
+        if konto is None:
+            raise ValueError("Konto nicht gefunden!")
+        if konto.saldo < betrag:
+            raise ValueError("Nicht genügend Saldo!")
+        
+        konto.auszahlen(betrag)
 
     def ueberweisen(self, von_konto_id: int, zu_konto_id: int, betrag: Decimal) -> None:
         if betrag < 1:
