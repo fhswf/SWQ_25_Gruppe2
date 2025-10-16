@@ -1,4 +1,5 @@
 #Implementiert von: Jan Hamer[JNHR] und Leon Borchardt[LNBT]
+
 """
 Test-Template für die KontoService-Klasse (Test-After Approach)
 ===============================================================
@@ -22,6 +23,7 @@ import pytest
 from decimal import Decimal
 
 from ..Code.konto_service import KontoService
+
 
 class TestKontoServiceErstellung:
     """
@@ -64,7 +66,7 @@ class TestKontoVerwaltung:
         service.konto_erstellen(Decimal('100.00'))
         konten = service.konten_auflisten()
         assert len(konten) == 1
-        assert konten[0].saldo == Decimal('100.00')
+        assert konten[0]["saldo"] == Decimal('100.00')
 
 class TestTransaktionen:
     """
@@ -76,7 +78,7 @@ class TestTransaktionen:
         service = KontoService()
         konto_id = service.konto_erstellen(Decimal('100.00'))
         service.einzahlen(konto_id, Decimal('50.00'))
-        assert service.konten_auflisten()[0].saldo == Decimal('150.00')
+        assert service.konten_auflisten()[0]["saldo"] == Decimal('150.00')
 
     def test_einzahlen_negativer_betrag(self):
         """Test: Einzahlung von negativem Betrag"""
@@ -96,7 +98,7 @@ class TestTransaktionen:
         service = KontoService()
         konto_id = service.konto_erstellen(Decimal('100.00'))
         service.auszahlen(konto_id, Decimal('50.00'))
-        assert service.konten_auflisten()[0].saldo == Decimal('50.00')
+        assert service.konten_auflisten()[0]["saldo"] == Decimal('50.00')
 
     def test_auszahlen_negativer_betrag(self):
         """Test: Auszahlen eines negativen Betrags"""
@@ -118,8 +120,8 @@ class TestTransaktionen:
         konto_id1 = service.konto_erstellen(Decimal('100.00'))
         konto_id2 = service.konto_erstellen(Decimal('50.00'))
         service.ueberweisen(konto_id1, konto_id2, Decimal('50.00'))
-        assert service.konten_auflisten()[0].saldo == Decimal('50.00')
-        assert service.konten_auflisten()[1].saldo == Decimal('100.00')
+        assert service.konten_auflisten()[0]["saldo"] == Decimal('50.00')
+        assert service.konten_auflisten()[1]["saldo"] == Decimal('100.00')
 
     def test_ueberweisen_negativer_betrag(self):
         """Test: Überweisen eines negativen Betrags"""
@@ -143,8 +145,8 @@ class TestTransaktionen:
         konto_id1 = service.konto_erstellen(Decimal('100.00'))
         konto_id2 = service.konto_erstellen(Decimal('50.00'))
         service.einziehen(konto_id1, konto_id2, Decimal('50.00'))
-        assert service.konten_auflisten()[0].saldo == Decimal('50.00')
-        assert service.konten_auflisten()[1].saldo == Decimal('100.00')
+        assert service.konten_auflisten()[0]["saldo"] == Decimal('50.00')
+        assert service.konten_auflisten()[1]["saldo"] == Decimal('100.00')
 
     def test_einziehen_negativer_betrag(self):
         """Test: Einziehen eines negativen Betrags"""
@@ -173,7 +175,7 @@ class TestSaldoFunktionen:
         service = KontoService()
         service.konto_erstellen(Decimal('100.00'))
         service.konto_erstellen(Decimal('200.00'))
-        assert service.gesamtsaldo() == Decimal('300.00')
+        assert service.gesamtsaldo_berechnen() == Decimal('300.00')
 
 
 class TestUtilityFunktionen:
@@ -200,4 +202,4 @@ class TestKontoServiceIntegration:
         konto_id2 = service.konto_erstellen(Decimal('200.00'))
         service.einzahlen(konto_id1, Decimal('50.00'))
         service.ueberweisen(konto_id1, konto_id2, Decimal('100.00'))
-        assert service.gesamtsaldo() == Decimal('350.00')
+        assert service.gesamtsaldo_berechnen() == Decimal('350.00')
