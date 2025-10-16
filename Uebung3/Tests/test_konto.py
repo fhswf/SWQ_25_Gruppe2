@@ -96,7 +96,6 @@ class TestKontoErstellung:
 class TestKontoEigenschaften:
     """
     Tests für Konto-Eigenschaften (Properties)
-    TODO: Team A - Testet konto_id und saldo Properties
     """
     # Beispiel-Tests:
     # - konto.konto_id gibt korrekte ID zurück
@@ -133,7 +132,6 @@ class TestKontoEigenschaften:
 class TestEinzahlung:
     """
     Tests für die Einzahlungs-Funktionalität
-    TODO: Team A - Testet alle Einzahlungs-Szenarien
     """
     # Beispiel-Tests:
     # - Einzahlung von positivem Betrag
@@ -181,7 +179,6 @@ class TestEinzahlung:
 class TestAuszahlung:
     """
     Tests für die Auszahlungs-Funktionalität  
-    TODO: Team A - Testet alle Auszahlungs-Szenarien
     """
     # Beispiel-Tests:
     # - Auszahlung bei ausreichendem Saldo
@@ -237,7 +234,6 @@ class TestAuszahlung:
 class TestKontoGrenzfaelle:
     """
     Tests für Grenzfälle und Besonderheiten
-    TODO: Team A - Testet Edge Cases und besondere Situationen
     """
     # Beispiel-Tests:
     # - Sehr große Beträge
@@ -283,9 +279,3 @@ class TestKontoGrenzfaelle:
         assert konto1 == konto2
         assert konto1 != konto3
 
-
-# TODO: Team A - Erweitern Sie diese Klassen oder fügen Sie neue hinzu!
-# Weitere mögliche Test-Klassen:
-# - TestKontoStringRepresentation
-# - TestKontoEquality
-# - TestKontoValidation
