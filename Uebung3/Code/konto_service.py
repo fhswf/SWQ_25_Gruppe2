@@ -76,17 +76,12 @@ class KontoService(KontoServiceInterface):
 
     def konten_auflisten(self) -> List[Dict]:
         return self._konten
-        return self._konten
 
     def konto_erstellen(self, saldo: Decimal = Decimal('0.00')) -> int:
         # TODO: Team B - Implementierung 
         # TODO: Team B - Implementierung 
         # Tipp: Nutzen Sie self._create_konto() für Konto-Erstellung!
         # Beispiel:
-        konto_id = self.get_max_konto_id() + 1
-        konto = self._create_konto(konto_id, saldo)
-        self._konten.append(konto)
-        return konto_id
         konto_id = self.get_max_konto_id() + 1
         konto = self._create_konto(konto_id, saldo)
         self._konten.append(konto)
@@ -131,12 +126,6 @@ class KontoService(KontoServiceInterface):
         zu_konto.einzahlen(betrag)
 
     def get_max_konto_id(self) -> int:
-        max_id = 0
-        for konto in self._konten:
-            if konto.id > max_id:
-                max_id = konto.id
-        return max_id
-
         max_id = 0
         for konto in self._konten:
             if konto.id > max_id:
