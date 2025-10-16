@@ -21,9 +21,7 @@ Tipps für Service-Tests:
 import pytest
 from decimal import Decimal
 
-# TODO: Team B - Entkommentieren Sie nach Ihrer Implementierung:
-from ..Code.konto_service import KontoService
-from ..Code.konto import Konto
+from Uebung3.Code.konto_service import KontoService
 
 class TestKontoServiceErstellung:
     """
