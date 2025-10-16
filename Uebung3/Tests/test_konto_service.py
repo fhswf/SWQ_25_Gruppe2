@@ -21,7 +21,7 @@ Tipps für Service-Tests:
 import pytest
 from decimal import Decimal
 
-from Uebung3.Code.konto_service import KontoService
+from ..Code.konto_service import KontoService
 
 class TestKontoServiceErstellung:
     """

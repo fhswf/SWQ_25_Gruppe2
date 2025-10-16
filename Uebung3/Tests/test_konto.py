@@ -22,7 +22,7 @@ Tipps für gute Tests:
 import pytest
 from decimal import Decimal
 
-from Uebung3.Code.konto import Konto
+from ..Code.konto import Konto
 
 
 class TestKontoErstellung:
@@ -77,7 +77,7 @@ class TestKontoErstellung:
     # Umsetzung von PRSE
     def test_kontoerstellung_invalidSaldo_string(self):
         """Test: Konto mit ungültigem Saldo, welches als string übergeben wird und zur Exception führt"""
-        with pytest.raises(ValueError):
+        with pytest.raises(TypeError):
             Konto(1, "fünfzig")
 
     # Umsetzung von PRSE
@@ -89,7 +89,7 @@ class TestKontoErstellung:
     # Umsetzung von PRSE
     def test_kontoerstellung_saldo_none(self):
         """Test: Konto mit None als Saldo → Exception"""
-        with pytest.raises(ValueError):
+        with pytest.raises(TypeError):
             Konto(1, None)
 
 
@@ -167,7 +167,7 @@ class TestEinzahlung:
     def test_einzahlung_invalid_type(self):
         """Test: Einzahlung von ungültigem Typ → Exception"""
         konto = Konto(1, Decimal("100.00"))
-        with pytest.raises(ValueError):
+        with pytest.raises(TypeError):
             konto.einzahlen("fünfzig")
 
     # Umsetzung von HAHR

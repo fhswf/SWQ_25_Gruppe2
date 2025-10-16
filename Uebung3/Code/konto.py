@@ -1,7 +1,7 @@
 # Implementiert von: [HAHR], [PRSE]
 
 from decimal import Decimal
-from interfaces import KontoInterface
+from .interfaces import KontoInterface
 
 class Konto(KontoInterface):
 
@@ -45,3 +45,11 @@ class Konto(KontoInterface):
         if self._saldo - betrag < Decimal('0.00'):
             raise ValueError("Konto darf nicht überzogen werden.")
         self._saldo -= betrag
+
+    def __str__(self):
+        return f"Konto(ID: {self._konto_id}, Saldo: {self._saldo:.2f})"
+    
+    def __eq__(self, other):
+        if not isinstance(other, Konto):
+            return False
+        return (self.konto_id == other.konto_id) and (self.saldo == other.saldo)

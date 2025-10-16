@@ -6,8 +6,8 @@ TODO: Implementieren Sie die KontoService-Klasse basierend auf dem KontoServiceI
 
 from decimal import Decimal
 from typing import List, Dict
-from interfaces import KontoServiceInterface, KontoInterface
-from konto import Konto
+from .interfaces import KontoServiceInterface, KontoInterface
+from .konto import Konto
 
 
 class KontoService(KontoServiceInterface):
