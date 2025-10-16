@@ -1,6 +1,5 @@
-# Jan Hamer [JaHa]
-# Leon Borchardt [LeBo]
-
+#Implementiert von: Jan Hamer [JNHR]und Leon Borchardt [LNBT]
+ 
 """
 TODO: Implementieren Sie die KontoService-Klasse basierend auf dem KontoServiceInterface
 """
@@ -93,6 +92,12 @@ class KontoService(KontoServiceInterface):
         
         von_konto = next((konto for konto in self._konten if konto.id == von_konto_id))
         zu_konto = next(konto for konto in self._konten if konto.id == zu_konto_id)
+
+        if von_konto == null:
+            raise ValueError("Ungültige KontoID des Senders")
+
+        if zu_konto == null:
+            raise ValueError("Ungültige KontoID des Empfängers")
         
         if von_konto.saldo < betrag:
             raise RuntimeError("Nicht genügend Saldo vorhanden!")
@@ -101,8 +106,21 @@ class KontoService(KontoServiceInterface):
         zu_konto.einzahlen(betrag)
 
     def einziehen(self, von_konto_id: int, zu_konto_id: int, betrag: Decimal) -> None:
+        if betrag < 1:
+            raise ValueError("Ungültige Mengenangabe!")
+        
         von_konto = next((konto for konto in self._konten if konto.id == von_konto_id))
         zu_konto = next(konto for konto in self._konten if konto.id == zu_konto_id)
+
+        if von_konto == null:
+            raise ValueError("Ungültige KontoID des Einzuziehenden")
+
+        if zu_konto == null:
+            raise ValueError("Ungültige KontoID des Einziehenden")
+
+        if von_konto.saldo < betrag:
+            raise RuntimeError("Nicht genügend Saldo vorhanden!")
+        
         von_konto.auszahlen(betrag)
         zu_konto.einzahlen(betrag)
 

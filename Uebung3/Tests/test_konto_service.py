@@ -1,3 +1,4 @@
+#Implementiert von: Jan Hamer[JNHR] und Leon Borchardt[LNBT]
 """
 Test-Template für die KontoService-Klasse (Test-After Approach)
 ===============================================================
