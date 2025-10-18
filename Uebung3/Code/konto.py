@@ -24,6 +24,12 @@ class Konto(KontoInterface):
         self._konto_id = konto_id
         self._saldo = saldo
 
+    def __repr__(self) -> str:
+        return f"Konto(konto_id={self.konto_id}, saldo={self.saldo})"
+
+    def __str__(self) -> str:
+        return f"Konto(ID: {self.konto_id}, Saldo: {self.saldo})"
+
     @property
     def konto_id(self) -> int:
         return self._konto_id
