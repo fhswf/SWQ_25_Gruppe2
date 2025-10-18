@@ -6,9 +6,6 @@ TODO: Implementieren Sie die KontoService-Klasse basierend auf dem KontoServiceI
 from decimal import Decimal
 from typing import List, Dict
 from .interfaces import KontoServiceInterface, KontoInterface
-
-
-# TODO: Team B - Später ersetzt ihr diesen Import durch Team A's Implementation:
 from .konto import Konto
 
 
