@@ -20,9 +20,7 @@ Tipps für gute Tests:
 
 import pytest
 from decimal import Decimal
-
-# TODO: Team A - Entkommentiert nach eurer Implementierung:
-from Code.konto import Konto
+from ..Code.konto import Konto
 
 class TestKontoErstellung:
 
