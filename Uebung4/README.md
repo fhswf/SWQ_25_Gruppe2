@@ -10,8 +10,8 @@ Die Übung erfolgt in zwei Teams mit Pair Programming.
 ## Übungsstruktur (3 Phasen)
 
 ### Phase 1: TDD-Katas (ca. 25–35 Minuten)
-- **Team A (2–3 Personen):** FizzBuzz mit TDD
-- **Team B (2–3 Personen):** String Calculator mit TDD
+- **Team A (2–3 Personen):** FizzBuzz mit TDD - Fiona, Chris
+- **Team B (2–3 Personen):** String Calculator mit TDD - Simon
 - Beide Teams arbeiten parallel und dokumentieren ihre TDD-Zyklen
 
 ### Phase 2: Erfahrungsaustausch & Cross-Testing (je Team ca. 7 Minuten)
