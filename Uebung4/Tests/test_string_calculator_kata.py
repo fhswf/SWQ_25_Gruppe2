@@ -22,7 +22,7 @@ class TestStringCalculatorTDD:
 
     def test_multiple_numbers(self):
         # Test mehrerer Additionen
-        assert add("1,3,5") == 9
+        assert add("1,3,5,7") == 16
 
 
 class TestStringCalculatorErweitert:
@@ -68,6 +68,8 @@ Refactoring: Sum Funktion in Schleife integriert - Autor: JNHR - Zeit: 8min
 Erkenntnisse:
 - Was war überraschend?
 - Wo musstet ihr refaktorieren?
+    - Am Anfang sum() genutzt, später durch for ersetzt, um einzelne zahlen zu prüfen
 - Welche Tests brachten neue Herausforderungen?
+    - Überlegen wie mit seperator umgegangen wird -> vereinheitlichung vor dem split
 - Unterschiede zu FizzBuzz?
 """
