@@ -52,7 +52,8 @@ class TestWeatherService:
         - Temperatur 35°C → "heiß"
         """
         assert True, "TODO: Durch echte Tests ersetzen"
-    
+
+
     # TODO: Team A - Beispiel für ersten echten Test:
     # def test_angenehm(self):
     #     """TDD-Zyklus 1: RED von [Name] um [Zeit]"""

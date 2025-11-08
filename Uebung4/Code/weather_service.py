@@ -40,9 +40,13 @@ def get_weather_category(city: str) -> str:
     # Erweitert schrittweise basierend auf Tests!
     # 
     # API-Call-Code:
-    # url = f"https://api.weather.com/current?city={city}"
-    # response = requests.get(url, timeout=5)
-    # response.raise_for_status()
-    # data = response.json()
-    # temperature = data.get("temperature")
-    pass
+    url = f"https://api.weather.com/current?city={city}"
+    response = requests.get(url, timeout=5)
+    response.raise_for_status()
+    data = response.json()
+    temperature = data.get("temperature")
+
+
+    def checkTemperature(temperature):
+        if(temperature <= 0):
+            return str(temperature)#"frostgefahr"
