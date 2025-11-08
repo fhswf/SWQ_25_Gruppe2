@@ -10,8 +10,8 @@ Die Übung erfolgt in zwei Teams mit Pair Programming.
 ## Übungsstruktur (3 Phasen)
 
 ### Phase 1: TDD-Katas (ca. 25–35 Minuten)
-- **Team A (2–3 Personen):** FizzBuzz mit TDD
-- **Team B (2–3 Personen):** String Calculator mit TDD
+- **Team A (2–3 Personen):** FizzBuzz mit TDD - Fiona, Chris
+- **Team B (2–3 Personen):** String Calculator mit TDD - Simon
 - Beide Teams arbeiten parallel und dokumentieren ihre TDD-Zyklen
 
 ### Phase 2: Erfahrungsaustausch & Cross-Testing (je Team ca. 7 Minuten)
@@ -19,8 +19,8 @@ Die Übung erfolgt in zwei Teams mit Pair Programming.
 - Hätten Sie die Lösung ohne TDD genauso implementiert?
 
 ### Phase 3: API-Mocking mit TDD (ca. 25–35 Minuten)
-- **Team A:** Weather-API mocken (Temperatur → Wetterkategorie)
-- **Team B:** Currency-API mocken (Wechselkurs → Bewertung)
+- **Team A:** Weather-API mocken (Temperatur → Wetterkategorie) - Fiona, Chris
+- **Team B:** Currency-API mocken (Wechselkurs → Bewertung) - Simon
 - Testgetriebene Entwicklung mit gemockten API-Calls
 
 ---

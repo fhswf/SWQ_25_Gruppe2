@@ -26,4 +26,12 @@ def fizzbuzz(n: int) -> str:
         "Fizz", "Buzz", "FizzBuzz" oder die Zahl als String
     """
     # TODO: Implementierung mit TDD
-    pass
+    def fizzbuzzreturn (n):
+        if((n % 3) and (n % 5)):
+            return "FizzBuzz"
+        elif(n % 3):
+            return "Fizz"
+        elif(n % 5):
+            return "Buzz"
+        else:
+            return str(n)

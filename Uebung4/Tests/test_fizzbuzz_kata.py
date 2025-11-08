@@ -19,7 +19,7 @@ import pytest
 
 # TODO: Team A - Import nach erster Implementierung:
 # from ..Code.fizzbuzz_kata import fizzbuzz
-
+from Uebung4.Code.fizzbuzz_kata import fizzbuzz as fizzbuzz
 
 class TestFizzBuzzTDD:
     """
@@ -43,10 +43,40 @@ class TestFizzBuzzTDD:
         TDD-Autor: [Name und Zeit]
         """
         # TODO: Euer erster TDD-Test hier
-        assert True, "Placeholder - startet hier mit TDD!"
+        #assert True, "Placeholder - startet hier mit TDD!"
 
         # Beispiel-Idee (entfernt nach eigenem Test):
-        # assert fizzbuzz(1) == "1"
+        assert fizzbuzz(0) == "0"
+        assert fizzbuzz(1) == "1"
+        assert fizzbuzz(2) == "2"
+        assert fizzbuzz(3) == "Fizz"
+        assert fizzbuzz(5) == "Buzz"
+        assert fizzbuzz(15) == "FizzBuzz"
+
+    def test_returnString(Self):
+        testArray = [0,1,2]
+        
+        for test in testArray:
+            assert fizzbuzz(test) == str(test)
+
+    def test_returnFizz(Self):
+        testArray = [3,6,9]
+
+        for test in testArray:
+            assert fizzbuzz(test) == "Fizz"
+
+    def test_returnBuzz(Self):
+        testArray = [5,10,20]
+
+        for test in testArray:
+            assert fizzbuzz(test) == "Buzz"
+
+    def test_returnFizzBuzz(Self):
+        testArray = [15,30,45]
+
+        for test in testArray:
+            assert fizzbuzz(test) == "FizzBuzz"
+
 
 
 class TestFizzBuzzErweitert:
@@ -64,7 +94,57 @@ class TestFizzBuzzErweitert:
         - Edge Cases (negative Zahlen, 0, große Zahlen)
         """
         # TODO: Erweiterte Tests hier
-        assert True, "TODO: Erweiterte FizzBuzz-Tests implementieren"
+        # assert True, "TODO: Erweiterte FizzBuzz-Tests implementieren"
+
+    def test_returnString(Self):
+        testArray = [0,1,2]
+        
+        for test in testArray:
+            assert fizzbuzz(test) == str(test)
+
+    def test_returnFizz(Self):
+        testArray = [3,6,9, -3]
+
+        for test in testArray:
+            assert fizzbuzz(test) == "Fizz"
+
+    def test_returnBuzz(Self):
+        testArray = [5,10,20, -5]
+
+        for test in testArray:
+            assert fizzbuzz(test) == "Buzz"
+
+    def test_returnFizzBuzz(Self):
+        testArray = [15,30,45, -15]
+
+        for test in testArray:
+            assert fizzbuzz(test) == "FizzBuzz"
+
+    def test_negativeValues(Self):
+        testArray = [-4,0,-256]
+
+        for test in testArray:
+            assert fizzbuzz(test) == str(test)
+
+    def test_EdgeCases(Self):
+        testArray = [-7,0,8096]
+
+        for test in testArray:
+            assert fizzbuzz(test) == str(test)
+
+    def test_canonicallyAll(self):        
+        testArray = [0,1,2,3,5,15, -3]
+        for test in testArray:
+            def fizzbuzzreturn (test):
+                if((test % 3) and (test % 5)):
+                    assert fizzbuzz(test) == "FizzBuzz"
+                elif(test % 3):
+                    assert fizzbuzz(test) == "Fizz"
+                elif(test % 5):
+                    assert fizzbuzz(test) == "Buzz"
+                else:
+                    assert fizzbuzz(test) == str(test)
+
 
 
 # TODO: Team A - Optional: TDD-Protokoll
