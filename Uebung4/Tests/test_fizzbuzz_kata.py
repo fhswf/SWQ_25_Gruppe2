@@ -17,6 +17,8 @@ Autorschaft dokumentieren: Wer hat welchen TDD-Schritt gemacht?
 
 import pytest
 
+from Uebung4.Code.fizzbuzz_kata import fizzbuzz
+
 # TODO: Team A - Import nach erster Implementierung:
 # from Teil2_TDD_und_Mocking.aufgaben.fizzbuzz_kata import fizzbuzz
 
@@ -32,55 +34,61 @@ class TestFizzBuzzTDD:
     - Ein Test nach dem anderen!
     """
 
-    def test_placeholder_start_here(self):
-        """
-        TODO: Team A - Ersetzt diesen Placeholder durch euren ersten TDD-Test!
+    # TDD-Zyklus 1: RED von [PRSE]
+    def test_non_divisible(self):
+        assert fizzbuzz(1) == "1"
+        assert fizzbuzz(2) != "1"
 
-        Ideen für den ersten Test:
-        - Was ist das einfachste Verhalten?
-        - fizzbuzz(1) sollte was zurückgeben?
+    # TDD-Zyklus 2: RED von [HAHR]
+    def test_divisible_by_three(self):
+        assert fizzbuzz(3) == "Fizz"
 
-        TDD-Autor: [Name und Zeit]
-        """
-        # TODO: Euer erster TDD-Test hier
-        assert True, "Placeholder - startet hier mit TDD!"
+    # TDD-Zyklus 3: RED von [PRSE]
+    def test_divisible_by_five(self):
+        assert fizzbuzz(5) == "Buzz"
 
-        # Beispiel-Idee (entfernt nach eigenem Test):
-        # assert fizzbuzz(1) == "1"
+    # TDD-Zyklus 4: RED von [HAHR]
+    def test_divisible_by_three_and_five(self):
+        assert fizzbuzz(15) == "FizzBuzz"
+        assert fizzbuzz(20) == "Buzz"
+        assert fizzbuzz(21) == "Fizz"
 
 
 class TestFizzBuzzErweitert:
     """
     TODO: Team A - Erweiterte Tests, wenn Basis funktioniert
+    TODO: Team A - Entwickelt weitere Tests für FizzBuzz
+
+    Ideen:
+    - Mehrere Zahlen gleichzeitig testen
+    - Parametrisierte Tests (@pytest.mark.parametrize)
+    - Edge Cases (negative Zahlen, 0, große Zahlen)
     """
 
-    def test_placeholder_extended_tests(self):
-        """
-        TODO: Team A - Entwickelt weitere Tests für FizzBuzz
+    # TDD-Zyklus 5: RED von [HAHR]
+    def test_divisible_by_zero(self):
+        assert fizzbuzz(0) == "0"
 
-        Ideen:
-        - Mehrere Zahlen gleichzeitig testen
-        - Parametrisierte Tests (@pytest.mark.parametrize)
-        - Edge Cases (negative Zahlen, 0, große Zahlen)
-        """
-        # TODO: Erweiterte Tests hier
-        assert True, "TODO: Erweiterte FizzBuzz-Tests implementieren"
+    # TDD-Zyklus 6: RED von [HAHR]
+    def test_non_divisible_by_negative(self):
+        assert fizzbuzz(-1) == "-1"
+        assert fizzbuzz(-2) != "-1"
 
+    # TDD-Zyklus 6: RED von [PRSE]
+    def test_divisible_by_negative_three(self):
+        assert fizzbuzz(-3) == "Fizz"
 
-# TODO: Team A - Optional: TDD-Protokoll
-"""
-TDD-Fortschritt dokumentieren:
-
-Test 1: [Was getestet] - Autor: [Name] - Zeit: [Zeit]
-Implementation 1: [Minimale Lösung] - Zeit: [Zeit]
-
-Test 2: [Was getestet] - Autor: [Name] - Zeit: [Zeit]  
-Refactoring: [Was geändert] - Zeit: [Zeit]
-
-[Weiter dokumentieren...]
-
-Erkenntnisse:
-- Was war überraschend?
-- Wo musstet ihr refaktorieren?
-- Welche Tests brachten neue Herausforderungen?
-"""
+    # TDD-Zyklus 6: RED von [PRSE]
+    def test_divisible_by_negative_five(self):
+        assert fizzbuzz(-5) == "Buzz"
+        
+    # TDD-Zyklus 6: RED von [PRSE]
+    def test_divisible_by_negative_three_and_five(self):
+        assert fizzbuzz(-15) == "FizzBuzz"
+        assert fizzbuzz(-20) == "Buzz"
+        assert fizzbuzz(-21) == "Fizz"    
+    
+    # TDD-Zyklus 7: RED von [HAHR]
+    def test_multiple_input_numbers(self):
+        numbers = [0,1,3,5,15]
+        assert fizzbuzz(numbers)
