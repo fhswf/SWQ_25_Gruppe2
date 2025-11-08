@@ -1,21 +1,4 @@
-"""
-TDD-Template für String Calculator Kata
-=======================================
-
-TODO: Team B - Entwickelt String Calculator mit TDD!
-
-String Calculator-Regeln:
-- Leerer String → 0
-- Ein String mit einer Zahl → diese Zahl
-- Zwei Zahlen mit Komma getrennt → Summe
-- Beliebig viele Zahlen → Summe aller
-- Neue Zeilen als Trenner erlaubt: "1\n2,3" → 6
-- Optional: Custom Delimiter: "//;\n1;2" → 3
-
-TDD-Prozess: RED → GREEN → REFACTOR → wiederholen!
-
-Autorschaft dokumentieren: Wer hat welchen TDD-Schritt gemacht?
-"""
+#Implementiert von: Jan Hamer[JNHR]
 
 import pytest
 
@@ -78,7 +61,7 @@ Test 3: Negative Zahlen Test hinzugefügt - Autor: JNHR - Zeit: 2min
 Refactoring: Schleife die jede Zahl prüft - Autor: JNHR - Zeit: 3min
 
 Test 4: Zahlen über 1000 sollen ignoriert werden - Autor: JNHR - Zeit: 2min
-Refactoring: 
+Refactoring: Sum Funktion in Schleife integriert - Autor: JNHR - Zeit: 8min
 
 [Weiter dokumentieren...]
 
