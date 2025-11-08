@@ -16,16 +16,16 @@ Hinweise:
 - Startet mit minimalster Implementierung!
 """
 
-import requests
+#import requests
 
 
 def get_weather_category(city: str) -> str:
     """
     Ruft Weather-API auf und gibt Temperatur-Kategorie zurück
-    
+
     Args:
         city: Stadt, für die das Wetter abgefragt wird
-        
+
     Returns:
         Temperatur-Kategorie als String:
         - "frostgefahr" (< 0°C)
@@ -38,15 +38,24 @@ def get_weather_category(city: str) -> str:
     # TODO: Team A - Implementierung hier!
     # Tipp: Startet mit einfachstem Fall (z.B. nur "angenehm" zurückgeben)
     # Erweitert schrittweise basierend auf Tests!
-    # 
+    #
     # API-Call-Code:
-    url = f"https://api.weather.com/current?city={city}"
-    response = requests.get(url, timeout=5)
-    response.raise_for_status()
-    data = response.json()
-    temperature = data.get("temperature")
-
+    #url = f"https://api.weather.com/current?city={city}"
+    #response = requests.get(url, timeout=5)
+    #response.raise_for_status()
+    #data = response.json()
+    #temperature = data.get("temperature")
 
     def checkTemperature(temperature):
-        if(temperature <= 0):
-            return str(temperature)#"frostgefahr"
+        if (temperature <= 0):
+            return "frostgefahr"
+        elif (temperature > 0 and temperature <= 10):
+            return "kalt"
+        elif (temperature > 10 and temperature <= 15):
+            return "kühl"
+        elif (temperature > 15 and temperature <= 24):
+            return "angenehm"
+        elif (temperature > 24 and temperature <= 30):
+            return "warm"
+        elif (temperature > 30):
+            return "heiß"
