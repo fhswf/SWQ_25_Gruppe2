@@ -3,6 +3,8 @@
 import pytest
 
 from ..Code.string_calculator_kata import add
+# TODO: Team B - Import nach erster Implementierung:
+# from ..Code.string_calculator_kata import add
 
 
 class TestStringCalculatorTDD:
