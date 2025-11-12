@@ -35,27 +35,43 @@ def get_weather_category(city: str) -> str:
         - "warm" (25-30°C)
         - "heiß" (> 30°C)
     """
-    # TODO: Team A - Implementierung hier!
     # Tipp: Startet mit einfachstem Fall (z.B. nur "angenehm" zurückgeben)
     # Erweitert schrittweise basierend auf Tests!
-    #
     # API-Call-Code:
     url = f"https://api.weather.com/current?city={city}"
-    response = requests.get(url, timeout=5)
-    response.raise_for_status()
-    data = response.json()
+
+    # TDD-Zyklus 1-6: REFACTOR von [HAHR] - Exception Handling ausgebessert
+    try:
+        response = requests.get(url, timeout=5)
+        response.raise_for_status()
+        data = response.json()
+    except requests.RequestException as e:
+        raise RuntimeError(f"network error when calling weather API: {e}") from e
+    except ValueError as e:
+        raise RuntimeError(f"invalid response from weather API: {e}") from e
+    
+    if not isinstance(data, dict):
+        raise RuntimeError("unexpected response format from weather API")
+
     temperature = data.get("temperature")
+
+    if temperature is None:
+        raise RuntimeError("missing or invalid temperature in weather API response")
+    try:
+        temperature = float(temperature)
+    except (TypeError, ValueError) as e:
+        raise RuntimeError("missing or invalid temperature in weather API response") from e
 
     # TDD-Zyklus 1-6: GREEN von [HAHR & PRSE]
     if temperature < 0:
         return "frostgefahr"
-    elif temperature >= 0 and temperature <= 10:
+    elif 0 <= temperature <= 10:
         return "kalt"
-    elif temperature >= 11 and temperature <= 15:
+    elif 11 <= temperature <= 15:
         return "kuehl"
-    elif temperature >= 16 and temperature <= 24:
+    elif 16 <= temperature <= 24:
         return "angenehm"
-    elif temperature >= 25 and temperature <= 30:
+    elif 25 <= temperature <= 30:
         return "warm"
     else:
         return "heiss"
